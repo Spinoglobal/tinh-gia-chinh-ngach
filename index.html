@@ -65,7 +65,7 @@ body {
 }
 .brand-text { color: white; font-size: 18px; font-weight: 800; }
 .brand-text span { color: var(--accent-light); }
-.brand-logo { height: 38px; display: block; }
+.brand-logo { height: 42px; display: block; filter: brightness(1); }
 .header-contact {
   display: flex; gap: 20px;
 }
@@ -164,9 +164,11 @@ input[type="number"] {
   width: 100%; padding: 13px 50px 13px 16px;
   border: 1.5px solid var(--gray-200);
   border-radius: 10px; font-family: 'JetBrains Mono', monospace;
-  font-size: 15px; font-weight: 500; color: var(--gray-800);
+  font-size: 16px; font-weight: 500; color: var(--gray-800);
   background: var(--gray-50);
   outline: none; transition: all 0.2s;
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
 }
 input[type="number"]:focus {
   border-color: var(--accent);
@@ -354,12 +356,50 @@ input[type="number"]::placeholder { color: var(--gray-300); font-weight: 400; }
 }
 
 /* RESPONSIVE */
-@media (max-width: 768px) {
+@media (max-width: 968px) {
   .main { grid-template-columns: 1fr; margin-top: -20px; }
+  .calculator { position: static; }
+  .header-contact { gap: 12px; }
+  .header-contact a { font-size: 12px; }
+}
+
+@media (max-width: 768px) {
+  .main { grid-template-columns: 1fr; margin-top: -20px; padding: 0 16px 48px; }
+  .header-inner { padding: 12px 16px; }
   .header-contact { display: none; }
+  .brand-logo { height: 34px; }
+  .page-hero { padding: 28px 0 36px; }
+  .page-hero .container { padding: 0 16px; }
+  .page-hero h1 { font-size: 22px; }
+  .page-hero p { font-size: 13px; }
+  .hero-badges { gap: 8px; }
+  .hero-badge { font-size: 11px; padding: 5px 12px; }
   .field-row { grid-template-columns: 1fr; }
-  .radio-group { flex-direction: column; }
-  .result-total-price { font-size: 28px; }
+  .radio-group { flex-wrap: wrap; }
+  .radio-option { flex: unset; min-width: calc(50% - 4px); }
+  .card-body { padding: 18px; }
+  .card-header { padding: 16px 18px; }
+  .card-header h2 { font-size: 15px; }
+  .result-total { padding: 22px 18px; }
+  .result-total-price { font-size: 26px; }
+  .result-breakdown { padding: 16px 18px; }
+  .result-row .r-label { font-size: 12px; }
+  .result-row .r-value { font-size: 13px; }
+  #formulaBox { margin: 0 18px 14px; padding: 12px 14px; font-size: 11px; }
+  .result-note { margin: 0 18px 16px; padding: 12px 14px; font-size: 11px; }
+  .result-cta { padding: 0 18px 18px; }
+  .table-mini td, .table-mini th { padding: 8px 10px; font-size: 12px; }
+  .mini-notes { font-size: 10px; }
+  .calc-note { font-size: 10px; padding: 12px 18px 16px; }
+  .btn-calculate { font-size: 14px; padding: 14px; margin-top: 20px; }
+  .footer { padding: 16px; font-size: 11px; }
+}
+
+@media (max-width: 380px) {
+  .page-hero h1 { font-size: 19px; }
+  .radio-option label { font-size: 12px; padding: 8px 10px; }
+  .result-total-price { font-size: 22px; }
+  .brand-logo { height: 28px; }
 }
 </style>
 </head>
@@ -368,7 +408,7 @@ input[type="number"]::placeholder { color: var(--gray-300); font-weight: 400; }
 <div class="header">
   <div class="header-inner">
     <a href="https://spinoglobal.vn" class="brand">
-      <img src="Logo-04.png" alt="Spino Global - Order ký gửi hàng quốc tế" class="brand-logo">
+      <img src="logo-transparent.png" alt="Spino Global - Order ký gửi hàng quốc tế" class="brand-logo">
     </a>
     <div class="header-contact">
       <a href="tel:08999388666">📞 08.9993.8866</a>
@@ -599,6 +639,7 @@ input[type="number"]::placeholder { color: var(--gray-300); font-weight: 400; }
     <!-- CONTACT CARD -->
     <div class="card" style="margin-top:24px; overflow:hidden;">
       <div style="background: linear-gradient(135deg, var(--navy), var(--navy-light)); padding: 28px 24px; text-align:center;">
+        <img src="logo-transparent.png" alt="Spino Global" style="height:36px; margin-bottom:16px; opacity:0.8;">
         <p style="font-size:13px; color:rgba(255,255,255,0.5); margin-bottom:6px;">Cần tư vấn chi tiết?</p>
         <p style="font-size:22px; font-weight:800; color:white; margin-bottom:4px;">08.9993.8866</p>
         <p style="font-size:22px; font-weight:800; color:var(--accent-light); margin-bottom:12px;">08.6777.1688</p>
@@ -608,16 +649,13 @@ input[type="number"]::placeholder { color: var(--gray-300); font-weight: 400; }
           <a href="https://zalo.me/0899938866" style="padding:10px 20px; background:rgba(255,255,255,0.1); color:white; border-radius:8px; font-size:13px; font-weight:700; text-decoration:none; border:1px solid rgba(255,255,255,0.15);">💬 Zalo</a>
         </div>
       </div>
-      <div style="padding:16px 24px; text-align:center;">
-        <img src="Logo-04.png" alt="Spino Global" style="height:40px; opacity:0.7;">
-      </div>
     </div>
   </div>
 </div>
 
 <div class="footer">
-  <img src="Logo-04.png" alt="Spino Global" style="height:32px; opacity:0.4; margin-bottom:8px;"><br>
-  © 2026 spinoglobal.vn
+  <img src="logo-transparent.png" alt="Spino Global" style="height:30px; opacity:0.5; margin-bottom:8px;"><br>
+  <span style="opacity:0.5;">© 2026 spinoglobal.vn</span>
 </div>
 
 <script>
