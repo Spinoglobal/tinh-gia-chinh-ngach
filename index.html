@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tính Giá Nhập Khẩu Chính Ngạch Trung - Việt | Spino Global</title>
+<meta name="description" content="Công cụ tính chi phí nhập khẩu chính ngạch Trung Quốc - Việt Nam. Tính tự động cước vận chuyển, phí ủy thác, thuế VAT. Bằng Tường - Hà Nội, 4-7 ngày.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0B2447;
+  --navy-light: #19376D;
+  --accent: #E8630A;
+  --accent-light: #FF8C38;
+  --accent-glow: rgba(232,99,10,0.12);
+  --green: #10B981;
+  --green-dark: #059669;
+  --green-soft: rgba(16,185,129,0.08);
+  --red: #EF4444;
+  --red-soft: rgba(239,68,68,0.08);
+  --blue: #2563EB;
+  --blue-soft: rgba(37,99,235,0.06);
+  --white: #FFFFFF;
+  --off-white: #F5F6FA;
+  --gray-50: #F9FAFB;
+  --gray-100: #EEF0F5;
+  --gray-200: #D4D8E1;
+  --gray-300: #B8BEC9;
+  --gray-400: #8B93A7;
+  --gray-500: #6B7280;
+  --gray-600: #4B5563;
+  --gray-800: #1F2937;
+  --dark: #0F172A;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Be Vietnam Pro', sans-serif;
+  background: var(--off-white);
+  color: var(--gray-800);
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* HEADER */
+.header {
+  background: var(--navy);
+  padding: 0;
+}
+.header-inner {
+  max-width: 960px; margin: 0 auto; padding: 16px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.brand-icon {
+  width: 40px; height: 40px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-light));
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 16px; color: white;
+}
+.brand-text { color: white; font-size: 18px; font-weight: 800; }
+.brand-text span { color: var(--accent-light); }
+.brand-logo { height: 38px; display: block; }
+.header-contact {
+  display: flex; gap: 20px;
+}
+.header-contact a {
+  color: rgba(255,255,255,0.65); font-size: 13px; font-weight: 500;
+  text-decoration: none; display: flex; align-items: center; gap: 5px;
+  transition: color 0.2s;
+}
+.header-contact a:hover { color: var(--accent-light); }
+
+/* HERO STRIP */
+.hero-strip {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+  padding: 36px 0 44px;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.hero-strip::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 500px 300px at 50% 80%, rgba(232,99,10,0.06), transparent);
+  pointer-events: none;
+}
+.hero-strip h1 {
+  font-size: clamp(22px, 3.5vw, 30px);
+  font-weight: 800; color: white;
+  margin-bottom: 8px; position: relative;
+}
+.hero-strip h1 em {
+  font-style: normal;
+  background: linear-gradient(135deg, var(--accent), var(--accent-light));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.hero-strip p { font-size: 14px; color: rgba(255,255,255,0.5); position: relative; }
+.hero-strip .route-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 100px; padding: 6px 18px;
+  font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.7);
+  margin-top: 14px; position: relative;
+}
+
+/* MAIN */
+.main {
+  max-width: 960px; margin: -28px auto 0; padding: 0 24px 64px;
+  position: relative; z-index: 2; flex: 1;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+  align-items: start;
+}
+
+/* CARD STYLE */
+.card {
+  background: white;
+  border-radius: 16px;
+  border: 1px solid var(--gray-100);
+  box-shadow: 0 4px 24px rgba(11,36,71,0.06);
+  overflow: hidden;
+}
+.card-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--gray-100);
+  display: flex; align-items: center; gap: 10px;
+}
+.card-header-icon {
+  width: 36px; height: 36px;
+  background: var(--accent-glow);
+  border-radius: 9px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+}
+.card-header h2 { font-size: 16px; font-weight: 700; color: var(--navy); }
+.card-body { padding: 24px; }
+
+/* FORM */
+.field { margin-bottom: 20px; }
+.field:last-child { margin-bottom: 0; }
+.field-label {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 8px;
+}
+.field-label label {
+  font-size: 13px; font-weight: 600; color: var(--gray-600);
+}
+.field-label .field-hint {
+  font-size: 11px; color: var(--gray-400); font-weight: 400;
+}
+.input-wrap {
+  position: relative;
+}
+.input-wrap .unit {
+  position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+  font-size: 13px; font-weight: 600; color: var(--gray-400);
+  pointer-events: none;
+}
+input[type="number"] {
+  width: 100%; padding: 13px 50px 13px 16px;
+  border: 1.5px solid var(--gray-200);
+  border-radius: 10px; font-family: 'JetBrains Mono', monospace;
+  font-size: 15px; font-weight: 500; color: var(--gray-800);
+  background: var(--gray-50);
+  outline: none; transition: all 0.2s;
+}
+input[type="number"]:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+  background: white;
+}
+input[type="number"]::placeholder { color: var(--gray-300); font-weight: 400; }
+
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+.radio-group {
+  display: flex; gap: 8px; flex-wrap: wrap;
+}
+.radio-option {
+  flex: 1; min-width: 0;
+}
+.radio-option input { display: none; }
+.radio-option label {
+  display: block; padding: 10px 12px;
+  border: 1.5px solid var(--gray-200);
+  border-radius: 10px; text-align: center;
+  font-size: 13px; font-weight: 600; color: var(--gray-600);
+  cursor: pointer; transition: all 0.2s;
+  background: var(--gray-50);
+}
+.radio-option input:checked + label {
+  border-color: var(--accent);
+  background: var(--accent-glow);
+  color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(232,99,10,0.08);
+}
+.radio-option label:hover {
+  border-color: var(--gray-300);
+}
+
+.btn-calculate {
+  width: 100%; padding: 15px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-light));
+  color: white; border: none; border-radius: 12px;
+  font-family: inherit; font-size: 15px; font-weight: 700;
+  cursor: pointer; transition: all 0.3s;
+  box-shadow: 0 6px 24px rgba(232,99,10,0.2);
+  margin-top: 24px;
+  letter-spacing: 0.3px;
+}
+.btn-calculate:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(232,99,10,0.3); }
+.btn-calculate:active { transform: translateY(0); }
+
+/* RESULT CARD */
+.result-card {
+  display: none;
+}
+.result-card.show {
+  display: block;
+  animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+@keyframes popIn {
+  from { opacity: 0; transform: translateY(16px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.result-total {
+  background: var(--navy);
+  padding: 28px 24px;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.result-total::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 300px 200px at 50% 100%, rgba(232,99,10,0.1), transparent);
+  pointer-events: none;
+}
+.result-total-label {
+  font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.45);
+  text-transform: uppercase; letter-spacing: 1.5px;
+  margin-bottom: 8px; position: relative;
+}
+.result-total-price {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 36px; font-weight: 800;
+  color: var(--accent-light);
+  position: relative; line-height: 1.1;
+}
+.result-total-price small {
+  font-size: 16px; font-weight: 500; color: rgba(255,255,255,0.4);
+}
+.result-total-sub {
+  font-size: 12px; color: rgba(255,255,255,0.35);
+  margin-top: 8px; position: relative;
+}
+
+.result-breakdown { padding: 20px 24px; }
+.result-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--gray-100);
+}
+.result-row:last-child { border-bottom: none; }
+.result-row .r-label {
+  font-size: 13px; color: var(--gray-500);
+  display: flex; align-items: center; gap: 6px;
+}
+.result-row .r-label .r-icon { font-size: 14px; }
+.result-row .r-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px; font-weight: 600; color: var(--gray-800);
+}
+.result-row.highlight .r-value { color: var(--accent); font-weight: 700; }
+.result-row.total-row {
+  border-top: 2px solid var(--gray-100);
+  border-bottom: none; padding-top: 14px; margin-top: 4px;
+}
+.result-row.total-row .r-label { font-weight: 700; color: var(--gray-800); font-size: 14px; }
+.result-row.total-row .r-value { font-size: 16px; font-weight: 800; color: var(--accent); }
+
+.result-note {
+  margin: 0 24px 20px;
+  background: var(--blue-soft);
+  border-radius: 10px; padding: 14px 16px;
+  font-size: 12px; color: var(--blue);
+  line-height: 1.7;
+}
+.result-note strong { font-weight: 700; }
+
+.result-cta {
+  padding: 0 24px 24px;
+}
+.btn-contact {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  width: 100%; padding: 14px;
+  background: var(--green); color: white; border: none;
+  border-radius: 10px; font-family: inherit;
+  font-size: 14px; font-weight: 700; cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+}
+.btn-contact:hover { background: var(--green-dark); transform: translateY(-1px); }
+
+/* PRICE TABLE (right side under result) */
+.table-mini {
+  margin-top: 24px;
+}
+.table-mini table {
+  width: 100%; border-collapse: collapse;
+  font-size: 13px;
+}
+.table-mini thead { background: var(--gray-50); }
+.table-mini th {
+  padding: 10px 14px; text-align: left;
+  font-size: 11px; font-weight: 700; color: var(--gray-500);
+  text-transform: uppercase; letter-spacing: 0.5px;
+  border-bottom: 2px solid var(--gray-100);
+}
+.table-mini td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--gray-100);
+  color: var(--gray-600);
+}
+.table-mini tbody tr:last-child td { border-bottom: none; }
+.table-mini .mono {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600; color: var(--accent);
+}
+.table-mini tbody tr:hover { background: var(--accent-glow); }
+.table-mini tbody tr.active-row {
+  background: var(--accent-glow);
+}
+.table-mini tbody tr.active-row td { color: var(--gray-800); font-weight: 600; }
+.table-mini tbody tr.active-row .mono { color: var(--accent); font-weight: 800; }
+
+/* NOTES UNDER TABLE */
+.mini-notes {
+  margin-top: 16px;
+  font-size: 11px; color: var(--gray-400); line-height: 1.8;
+}
+.mini-notes li { margin-bottom: 2px; list-style: none; padding-left: 14px; position: relative; }
+.mini-notes li::before { content: '•'; position: absolute; left: 0; color: var(--gray-300); }
+
+/* FOOTER */
+.footer {
+  background: var(--dark);
+  text-align: center; padding: 20px;
+  font-size: 12px; color: rgba(255,255,255,0.25);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .main { grid-template-columns: 1fr; margin-top: -20px; }
+  .header-contact { display: none; }
+  .field-row { grid-template-columns: 1fr; }
+  .radio-group { flex-direction: column; }
+  .result-total-price { font-size: 28px; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <a href="https://spinoglobal.vn" class="brand">
+      <img src="Logo-04.png" alt="Spino Global - Order ký gửi hàng quốc tế" class="brand-logo">
+    </a>
+    <div class="header-contact">
+      <a href="tel:08999388666">📞 08.9993.8866</a>
+      <a href="tel:0867771688">📞 08.6777.1688</a>
+      <a href="https://spinoglobal.vn">🌐 spinoglobal.vn</a>
+    </div>
+  </div>
+</div>
+
+<div class="hero-strip">
+  <h1>Tính chi phí nhập khẩu <em>chính ngạch</em></h1>
+  <p>Cước vận chuyển + Phí ủy thác + Thuế VAT — tính tự động, minh bạch</p>
+  <div class="route-tag">🇨🇳 Bằng Tường → Hà Nội 🇻🇳 &nbsp;•&nbsp; 4-7 ngày &nbsp;•&nbsp; Áp dụng từ 01/01/2026</div>
+</div>
+
+<div class="main">
+  <!-- LEFT: INPUT -->
+  <div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header-icon">📦</div>
+        <h2>Thông tin hàng hóa</h2>
+      </div>
+      <div class="card-body">
+        <div class="field-row">
+          <div class="field">
+            <div class="field-label">
+              <label>⚖️ Cân nặng</label>
+              <span class="field-hint">Tối thiểu 100kg</span>
+            </div>
+            <div class="input-wrap">
+              <input type="number" id="weightInput" placeholder="VD: 500" min="0" step="1">
+              <span class="unit">KG</span>
+            </div>
+          </div>
+          <div class="field">
+            <div class="field-label">
+              <label>📐 Thể tích</label>
+              <span class="field-hint">Mét khối</span>
+            </div>
+            <div class="input-wrap">
+              <input type="number" id="volumeInput" placeholder="VD: 2.5" min="0" step="0.01">
+              <span class="unit">M³</span>
+            </div>
+          </div>
+        </div>
+        <div class="compare-note" id="compareNote" style="display:none; margin-bottom:20px; padding:10px 14px; border-radius:8px; font-size:12px; line-height:1.6;">
+        </div>
+
+        <div class="field">
+          <div class="field-label">
+            <label>Giá trị hàng hóa (ước tính)</label>
+            <span class="field-hint">Để tính phí ủy thác & VAT</span>
+          </div>
+          <div class="input-wrap">
+            <input type="number" id="goodsValue" placeholder="VD: 200000000" min="0" step="1000000" oninput="autoCalc()">
+            <span class="unit">VNĐ</span>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="field-label">
+            <label>Số mục hàng (mã HS)</label>
+            <span class="field-hint">Dưới 4 mục: miễn phí</span>
+          </div>
+          <div class="radio-group">
+            <div class="radio-option">
+              <input type="radio" name="items" id="items1" value="1" checked>
+              <label for="items1">1-3 mục</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" name="items" id="items4" value="4">
+              <label for="items4">4-6 mục</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" name="items" id="items7" value="7">
+              <label for="items7">7+ mục</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="field-label">
+            <label>Thuế nhập khẩu (%)</label>
+            <span class="field-hint">Tùy mã HS, thường 0-25%</span>
+          </div>
+          <div class="input-wrap">
+            <input type="number" id="importTaxRate" placeholder="VD: 15" min="0" max="100" step="0.1" value="">
+            <span class="unit">%</span>
+          </div>
+          <div class="form-hint" style="margin-top:6px;">
+            <a href="https://www.customs.gov.vn/index.jsp?pageId=24" target="_blank" rel="noopener" style="color:var(--blue); text-decoration:none; font-weight:500;">🔍 Tra cứu mã HS & thuế suất tại Hải quan</a>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="field-label">
+            <label>Thuế VAT</label>
+            <span class="field-hint">Tính trên giá CIF + thuế NK</span>
+          </div>
+          <div class="radio-group">
+            <div class="radio-option">
+              <input type="radio" name="vat" id="vat8" value="8" checked>
+              <label for="vat8">8%</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" name="vat" id="vat10" value="10">
+              <label for="vat10">10%</label>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn-calculate" onclick="calculate()">
+          Tính chi phí nhập khẩu →
+        </button>
+      </div>
+    </div>
+
+    <!-- BẢNG GIÁ THAM KHẢO -->
+    <div class="card table-mini" style="margin-top:24px;">
+      <div class="card-header">
+        <div class="card-header-icon">📊</div>
+        <h2>Bảng giá cước vận chuyển</h2>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Mức cân / thể tích</th>
+            <th>Giá/KG</th>
+            <th>Giá/M³</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr id="row1">
+            <td>100 — 300</td>
+            <td class="mono">6.000đ</td>
+            <td class="mono">1.300.000đ</td>
+          </tr>
+          <tr id="row2">
+            <td>300 — 1.000</td>
+            <td class="mono">5.200đ</td>
+            <td class="mono">1.200.000đ</td>
+          </tr>
+          <tr id="row3">
+            <td>1.000 — 2.000</td>
+            <td class="mono">5.000đ</td>
+            <td class="mono">1.140.000đ</td>
+          </tr>
+          <tr id="row4">
+            <td>2.000 — 5.000</td>
+            <td class="mono">4.800đ</td>
+            <td class="mono">1.000.000đ</td>
+          </tr>
+          <tr id="row5">
+            <td>Trên 5.000</td>
+            <td class="mono">Liên hệ</td>
+            <td class="mono">Liên hệ</td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="padding: 14px 14px 16px;">
+        <ul class="mini-notes">
+          <li>Hàng dưới 100kg: +2.000đ/kg hoặc +150.000đ/m³</li>
+          <li>Phí ủy thác: 1,5% (dưới 500tr) — 1% (trên 500tr)</li>
+          <li>Từ mục thứ 4: +300.000đ/mục hàng</li>
+          <li>Chưa gồm thuế NK, kiểm định, phí đặc thù ngành hàng (nếu có)</li>
+          <li>Hàng nguyên cont / nguyên xe: liên hệ báo riêng</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT: RESULT -->
+  <div>
+    <div class="card result-card" id="resultCard">
+      <div class="result-total">
+        <div class="result-total-label">Tổng chi phí ước tính</div>
+        <div class="result-total-price" id="totalDisplay">0 <small>VNĐ</small></div>
+        <div class="result-total-sub" id="totalSub"></div>
+      </div>
+      <div class="result-breakdown">
+        <div class="result-row highlight">
+          <span class="r-label"><span class="r-icon">🚛</span> Cước vận chuyển</span>
+          <span class="r-value" id="rShipping">—</span>
+        </div>
+        <div class="result-row">
+          <span class="r-label"><span class="r-icon">📋</span> Phí ủy thác XNK</span>
+          <span class="r-value" id="rAgency">—</span>
+        </div>
+        <div class="result-row">
+          <span class="r-label"><span class="r-icon">🏦</span> Thuế nhập khẩu</span>
+          <span class="r-value" id="rImportTax">—</span>
+        </div>
+        <div class="result-row">
+          <span class="r-label"><span class="r-icon">🏛️</span> Thuế VAT</span>
+          <span class="r-value" id="rVat">—</span>
+        </div>
+        <div class="result-row">
+          <span class="r-label"><span class="r-icon">📑</span> Phí mục hàng bổ sung</span>
+          <span class="r-value" id="rItems">—</span>
+        </div>
+        <div class="result-row total-row">
+          <span class="r-label">TỔNG CỘNG</span>
+          <span class="r-value" id="rTotal">—</span>
+        </div>
+      </div>
+      <div id="formulaBox" style="display:none; margin: 0 24px 16px; background:var(--gray-50); border-radius:10px; padding:14px 16px; font-size:12px; color:var(--gray-600); line-height:1.9;">
+        <strong style="color:var(--navy);">📐 Chi tiết cách tính:</strong><br>
+        <span id="formulaDetail"></span>
+      </div>
+      <div class="result-note" id="resultNote">
+        <strong>📌 Lưu ý:</strong> Giá trên là ước tính tham khảo. Thuế VAT tính trên (giá trị hàng + thuế NK). Chưa bao gồm phí kiểm định, phí đặc thù ngành hàng (nếu có). Liên hệ hotline để nhận báo giá chính xác.
+      </div>
+      <div class="result-cta">
+        <a href="tel:0899938866" class="btn-contact">
+          📞 Gọi ngay: 08.9993.8866
+        </a>
+      </div>
+    </div>
+
+    <!-- Placeholder khi chưa tính -->
+    <div class="card" id="placeholder" style="text-align:center; padding: 60px 32px;">
+      <div style="font-size:48px; margin-bottom:16px; opacity:0.3;">📦</div>
+      <p style="font-size:15px; font-weight:600; color:var(--gray-400); margin-bottom:8px;">Nhập thông tin hàng hóa</p>
+      <p style="font-size:13px; color:var(--gray-300); max-width:240px; margin:0 auto; line-height:1.7;">Điền cân nặng hoặc thể tích và giá trị hàng để xem chi phí ước tính</p>
+    </div>
+
+    <!-- CONTACT CARD -->
+    <div class="card" style="margin-top:24px; overflow:hidden;">
+      <div style="background: linear-gradient(135deg, var(--navy), var(--navy-light)); padding: 28px 24px; text-align:center;">
+        <p style="font-size:13px; color:rgba(255,255,255,0.5); margin-bottom:6px;">Cần tư vấn chi tiết?</p>
+        <p style="font-size:22px; font-weight:800; color:white; margin-bottom:4px;">08.9993.8866</p>
+        <p style="font-size:22px; font-weight:800; color:var(--accent-light); margin-bottom:12px;">08.6777.1688</p>
+        <p style="font-size:12px; color:rgba(255,255,255,0.35);">Hotline / Zalo — hỗ trợ 24/7</p>
+        <div style="margin-top:16px; display:flex; gap:8px; justify-content:center;">
+          <a href="tel:0899938866" style="padding:10px 20px; background:var(--accent); color:white; border-radius:8px; font-size:13px; font-weight:700; text-decoration:none;">📞 Gọi ngay</a>
+          <a href="https://zalo.me/0899938866" style="padding:10px 20px; background:rgba(255,255,255,0.1); color:white; border-radius:8px; font-size:13px; font-weight:700; text-decoration:none; border:1px solid rgba(255,255,255,0.15);">💬 Zalo</a>
+        </div>
+      </div>
+      <div style="padding:16px 24px; text-align:center;">
+        <img src="Logo-04.png" alt="Spino Global" style="height:40px; opacity:0.7;">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <img src="Logo-04.png" alt="Spino Global" style="height:32px; opacity:0.4; margin-bottom:8px;"><br>
+  © 2026 spinoglobal.vn
+</div>
+
+<script>
+// Price tiers
+const kgRates = [
+  { min: 0, max: 100, rate: 8000 },    // dưới 100kg: +2000
+  { min: 100, max: 300, rate: 6000 },
+  { min: 300, max: 1000, rate: 5200 },
+  { min: 1000, max: 2000, rate: 5000 },
+  { min: 2000, max: 5000, rate: 4800 },
+];
+
+const m3Rates = [
+  { min: 0, max: 0.5, rate: 1450000 },   // dưới ~100kg equiv: +150k
+  { min: 0.5, max: 1.5, rate: 1300000 },  // 100-300 equiv
+  { min: 1.5, max: 5, rate: 1200000 },    // 300-1000 equiv
+  { min: 5, max: 10, rate: 1140000 },     // 1000-2000 equiv
+  { min: 10, max: 25, rate: 1000000 },    // 2000-5000 equiv
+];
+
+function getKgRate(kg) {
+  if (kg <= 0) return null;
+  for (const tier of kgRates) {
+    if (kg >= tier.min && kg < tier.max) return tier.rate;
+  }
+  if (kg >= 5000) return null;
+  return 4800;
+}
+
+function getM3Rate(m3) {
+  if (m3 <= 0) return null;
+  for (const tier of m3Rates) {
+    if (m3 >= tier.min && m3 < tier.max) return tier.rate;
+  }
+  if (m3 >= 25) return null;
+  return 1000000;
+}
+
+function getKgTierIndex(kg) {
+  if (kg < 100) return 1;
+  if (kg < 300) return 1;
+  if (kg < 1000) return 2;
+  if (kg < 2000) return 3;
+  if (kg < 5000) return 4;
+  return 5;
+}
+
+function getM3TierIndex(m3) {
+  if (m3 < 0.5) return 1;
+  if (m3 < 1.5) return 1;
+  if (m3 < 5) return 2;
+  if (m3 < 10) return 3;
+  if (m3 < 25) return 4;
+  return 5;
+}
+
+function highlightRow(tierIndex) {
+  for (let i = 1; i <= 5; i++) {
+    const row = document.getElementById('row' + i);
+    if (row) row.classList.remove('active-row');
+  }
+  if (tierIndex >= 1 && tierIndex <= 5) {
+    const row = document.getElementById('row' + tierIndex);
+    if (row) row.classList.add('active-row');
+  }
+}
+
+function fmt(n) {
+  return Math.round(n).toLocaleString('vi-VN');
+}
+
+function calculate() {
+  const weight = parseFloat(document.getElementById('weightInput').value) || 0;
+  const volume = parseFloat(document.getElementById('volumeInput').value) || 0;
+  const goodsValue = parseFloat(document.getElementById('goodsValue').value) || 0;
+  const itemsVal = document.querySelector('input[name="items"]:checked').value;
+  const vatRate = parseFloat(document.querySelector('input[name="vat"]:checked').value) / 100;
+
+  if (weight <= 0 && volume <= 0) {
+    alert('Vui lòng nhập cân nặng hoặc thể tích hàng hóa (hoặc cả hai)');
+    return;
+  }
+
+  // Tính cước theo KG
+  let costByKg = 0;
+  let kgRate = 0;
+  let kgDisplay = '';
+  let kgValid = false;
+  if (weight > 0) {
+    kgRate = getKgRate(weight);
+    if (kgRate !== null) {
+      costByKg = weight * kgRate;
+      kgDisplay = fmt(kgRate) + 'đ/kg × ' + fmt(weight) + 'kg = ' + fmt(costByKg) + 'đ';
+      kgValid = true;
+    }
+  }
+
+  // Tính cước theo M3
+  let costByM3 = 0;
+  let m3Rate = 0;
+  let m3Display = '';
+  let m3Valid = false;
+  if (volume > 0) {
+    m3Rate = getM3Rate(volume);
+    if (m3Rate !== null) {
+      costByM3 = volume * m3Rate;
+      m3Display = fmt(m3Rate) + 'đ/m³ × ' + volume.toFixed(2) + 'm³ = ' + fmt(costByM3) + 'đ';
+      m3Valid = true;
+    }
+  }
+
+  // Nếu cả 2 đều trên 5000 → liên hệ
+  if (weight >= 5000 || volume >= 25) {
+    alert('Hàng quá lớn — vui lòng liên hệ hotline 08.9993.8866 để báo giá riêng.');
+    return;
+  }
+
+  // Chọn cách tính nào nhiều tiền hơn
+  let shippingCost = 0;
+  let rateDisplay = '';
+  let usedMethod = '';
+  let tierIndex = 1;
+  const compareNote = document.getElementById('compareNote');
+
+  if (kgValid && m3Valid) {
+    // Cả 2 đều có → so sánh
+    if (costByKg >= costByM3) {
+      shippingCost = costByKg;
+      rateDisplay = fmt(kgRate) + 'đ/kg × ' + fmt(weight) + 'kg';
+      usedMethod = 'KG';
+      tierIndex = getKgTierIndex(weight);
+    } else {
+      shippingCost = costByM3;
+      rateDisplay = fmt(m3Rate) + 'đ/m³ × ' + volume.toFixed(2) + 'm³';
+      usedMethod = 'M³';
+      tierIndex = getM3TierIndex(volume);
+    }
+    // Hiện so sánh
+    compareNote.style.display = 'block';
+    if (costByKg >= costByM3) {
+      compareNote.style.background = 'rgba(232,99,10,0.06)';
+      compareNote.style.color = '#9a4a0a';
+      compareNote.innerHTML = '<strong>⚖️ Tính theo CÂN NẶNG</strong> (cao hơn)<br>'
+        + '• Theo KG: ' + kgDisplay + '<br>'
+        + '• Theo M³: ' + m3Display + '<br>'
+        + '→ Chênh lệch: +' + fmt(costByKg - costByM3) + 'đ';
+    } else {
+      compareNote.style.background = 'rgba(37,99,235,0.06)';
+      compareNote.style.color = '#1e40af';
+      compareNote.innerHTML = '<strong>📐 Tính theo THỂ TÍCH</strong> (cao hơn)<br>'
+        + '• Theo KG: ' + kgDisplay + '<br>'
+        + '• Theo M³: ' + m3Display + '<br>'
+        + '→ Chênh lệch: +' + fmt(costByM3 - costByKg) + 'đ';
+    }
+  } else if (kgValid) {
+    shippingCost = costByKg;
+    rateDisplay = fmt(kgRate) + 'đ/kg × ' + fmt(weight) + 'kg';
+    usedMethod = 'KG';
+    tierIndex = getKgTierIndex(weight);
+    compareNote.style.display = 'none';
+  } else if (m3Valid) {
+    shippingCost = costByM3;
+    rateDisplay = fmt(m3Rate) + 'đ/m³ × ' + volume.toFixed(2) + 'm³';
+    usedMethod = 'M³';
+    tierIndex = getM3TierIndex(volume);
+    compareNote.style.display = 'none';
+  }
+
+  // Agency fee (phí ủy thác)
+  let agencyRate = goodsValue > 0 ? (goodsValue <= 500000000 ? 0.015 : 0.01) : 0;
+  let agencyCost = Math.round(goodsValue * agencyRate);
+  let agencyDisplay = agencyCost > 0
+    ? fmt(agencyCost) + 'đ (' + (agencyRate * 100).toFixed(1) + '%)'
+    : 'Nhập giá trị hàng để tính';
+
+  // Import tax (thuế nhập khẩu)
+  const importTaxRateInput = parseFloat(document.getElementById('importTaxRate').value);
+  const importTaxRate = isNaN(importTaxRateInput) ? 0 : importTaxRateInput / 100;
+  let importTaxCost = Math.round(goodsValue * importTaxRate);
+  let importTaxDisplay = '';
+  if (importTaxRate > 0 && goodsValue > 0) {
+    importTaxDisplay = fmt(importTaxCost) + 'đ (' + (importTaxRate * 100) + '%)';
+  } else if (importTaxRate > 0 && goodsValue <= 0) {
+    importTaxDisplay = 'Nhập giá trị hàng để tính';
+    importTaxCost = 0;
+  } else {
+    importTaxDisplay = '0đ (chưa nhập thuế suất)';
+    importTaxCost = 0;
+  }
+
+  // VAT — tính trên (giá trị hàng + thuế nhập khẩu)
+  const vatBase = goodsValue + importTaxCost;
+  let vatCost = Math.round(vatBase * vatRate);
+  let vatDisplay = '';
+  if (goodsValue > 0) {
+    if (importTaxCost > 0) {
+      vatDisplay = fmt(vatCost) + 'đ (' + (vatRate * 100) + '%)';
+    } else {
+      vatDisplay = fmt(vatCost) + 'đ (' + (vatRate * 100) + '%)';
+    }
+  } else {
+    vatDisplay = 'Nhập giá trị hàng để tính';
+  }
+
+  // Extra items fee
+  let itemsFee = 0;
+  if (itemsVal === '4') itemsFee = 300000 * 3;
+  else if (itemsVal === '7') itemsFee = 300000 * 5;
+  let itemsDisplay = itemsFee > 0 ? fmt(itemsFee) + 'đ' : 'Miễn phí (≤3 mục)';
+
+  // Total
+  const total = shippingCost + agencyCost + importTaxCost + vatCost + itemsFee;
+
+  // Highlight tier
+  highlightRow(tierIndex);
+
+  // Display
+  document.getElementById('rShipping').textContent = fmt(shippingCost) + 'đ (theo ' + usedMethod + ')';
+  document.getElementById('rAgency').textContent = agencyDisplay;
+  document.getElementById('rImportTax').textContent = importTaxDisplay;
+  document.getElementById('rVat').textContent = vatDisplay;
+  document.getElementById('rItems').textContent = itemsDisplay;
+  document.getElementById('rTotal').textContent = fmt(total) + ' VNĐ';
+  document.getElementById('totalDisplay').innerHTML = fmt(total) + ' <small>VNĐ</small>';
+  document.getElementById('totalSub').textContent = 'Cước: ' + rateDisplay;
+
+  // Formula detail
+  let formulaLines = [];
+  formulaLines.push('• Cước vận chuyển: ' + rateDisplay + ' = <strong>' + fmt(shippingCost) + 'đ</strong>');
+  if (agencyCost > 0) {
+    formulaLines.push('• Phí ủy thác: ' + fmt(goodsValue) + ' × ' + (agencyRate*100).toFixed(1) + '% = <strong>' + fmt(agencyCost) + 'đ</strong>');
+  }
+  if (importTaxCost > 0) {
+    formulaLines.push('• Thuế NK: ' + fmt(goodsValue) + ' × ' + (importTaxRate*100) + '% = <strong>' + fmt(importTaxCost) + 'đ</strong>');
+    formulaLines.push('• Thuế VAT: (' + fmt(goodsValue) + ' + ' + fmt(importTaxCost) + ') × ' + (vatRate*100) + '% = ' + fmt(vatBase) + ' × ' + (vatRate*100) + '% = <strong>' + fmt(vatCost) + 'đ</strong>');
+  } else if (goodsValue > 0) {
+    formulaLines.push('• Thuế VAT: ' + fmt(goodsValue) + ' × ' + (vatRate*100) + '% = <strong>' + fmt(vatCost) + 'đ</strong>');
+  }
+  if (itemsFee > 0) {
+    formulaLines.push('• Phí mục hàng bổ sung: <strong>' + fmt(itemsFee) + 'đ</strong>');
+  }
+  
+  const formulaBox = document.getElementById('formulaBox');
+  const formulaDetail = document.getElementById('formulaDetail');
+  if (formulaLines.length > 0) {
+    formulaDetail.innerHTML = formulaLines.join('<br>');
+    formulaBox.style.display = 'block';
+  } else {
+    formulaBox.style.display = 'none';
+  }
+
+  // Show result
+  document.getElementById('placeholder').style.display = 'none';
+  const resultCard = document.getElementById('resultCard');
+  resultCard.classList.remove('show');
+  void resultCard.offsetWidth;
+  resultCard.classList.add('show');
+}
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
